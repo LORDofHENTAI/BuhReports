@@ -1,0 +1,16 @@
+<div class="main-conteiner">
+    <div class="side-nav-conteiner">
+        <button routerLink="proceed" (click)="selectedClick(1)" [ngClass]="{'selected': selectedButton === 1}">
+            Итоговая выручка
+        </button>
+        <button routerLink="archive" (click)="selectedClick(2)" [ngClass]="{'selected': selectedButton === 2}">
+            Архив
+        </button>
+        <button routerLink="logs" (click)="selectedClick(3)" [ngClass]="{'selected': selectedButton === 3}">
+            Логи
+        </button>
+    </div>
+    <div class="app-conteiner">
+        <router-outlet></router-outlet>
+    </div>
+</div>

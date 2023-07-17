@@ -1,0 +1,25 @@
+.table-box{
+    height:99%;
+    border: 0.3px grey solid;
+    border-radius: 10px;
+    overflow: auto;
+    table{
+        text-align: center;
+        width: 100%;
+        border-spacing: 0px;
+        border-collapse: collapse;
+        tr:first-child{
+            background: #6440b6;
+            color: #fff;
+            height: 50px;
+        }
+        tr{
+            position: relative;
+        }
+        button{
+            width: 100px;
+            background-color: white;
+            color: red;
+        }
+    }
+}

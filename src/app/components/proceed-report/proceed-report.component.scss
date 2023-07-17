@@ -1,0 +1,97 @@
+.main-container{
+    width: 100%;
+    height: 100%;
+    .control-conteiner{
+        margin-top: 10px;
+        margin-left: 10px;
+        mat-form-field{
+            margin-left: 10px;
+        }
+    }
+    .report-data-conteiner{
+        button{
+            width: 12vw;
+            margin-left: 10px;
+            margin-top: 10px;
+        }
+    }
+    .loader{
+        width: 100%;
+        height: 100%;
+        margin-left: 20px;
+        margin-top: 20px;
+    }
+    .box {
+        position: relative;
+        width: 400px;
+        height: 300px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: rgba(0, 0, 0, 0.5);
+        overflow: hidden;
+        border-radius: 20px;
+    }
+    .box::before {
+        content: "";
+        position: absolute;
+        width: 150px;
+        height: 200%;
+        background: linear-gradient(#6440b6, #6440b6);
+        animation: anima 4s linear infinite;
+    }
+    .box::after {
+        content: "";
+        position: absolute;
+        inset: 4px;
+        background: rgb(255, 255, 255);
+        border-radius: 16px;
+    }
+    @keyframes anima {
+        0% {
+            transform: rotate(0deg);
+        }
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+    span:first-child{
+        color: #000!important;
+    }
+    .box span {
+        position: relative;
+        color: rgb(255, 255, 255);
+        position: relative;
+        z-index: 10;
+        -webkit-text-stroke: 0.1vw #000000;
+        font-size: 4em;
+        height: 45px;
+        padding-top: 14px;
+        
+
+        &::before{
+        content: attr(data-text);
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 0;
+        height: 100%;
+        color: #000000;
+        padding-top: 14px;
+        -webkit-text-stroke: 0vw #000000;
+        // border-right: 2px solid #000000;
+        overflow: hidden;
+        animation: text_animation_effect 3s linear infinite;
+    }
+    }
+    
+    @keyframes text_animation_effect{
+        0%, 10%, 100%{
+            width: 0;
+        }
+        70%,90%{
+            width: 100%;
+        }
+    }
+    
+}

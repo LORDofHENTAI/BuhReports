@@ -1,0 +1,26 @@
+<div class="main-container">
+    <div class="control-conteiner" *ngIf="!loaderShow">
+        <mat-form-field appearance="outline">
+            <mat-label>Выберите месяц</mat-label>
+            <mat-select [(ngModel)]="selectedMonth">
+                <mat-option *ngFor="let m of month" [value]="m.value">
+                    {{m.viewValue}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Введите год</mat-label>
+            <input matInput #postalCode maxlength="4" [(ngModel)]="selectedYear" [min]="2020" [max]="2040">
+            <mat-hint align="end">{{postalCode.value.length}} / 4</mat-hint>
+        </mat-form-field>
+    </div>
+    <div class="report-data-conteiner" *ngIf="!loaderShow">
+        <button mat-raised-button (click)="getExcelReport()">Сформировать отчет</button>
+        <button mat-raised-button (click)="DeleteReport()">Очистить отчет</button>
+    </div>
+    <div class="loader" *ngIf="loaderShow">
+        <div class="box">
+            <span>Загрузка</span>><span data-text="...">...</span>
+        </div>
+    </div>
+</div>
