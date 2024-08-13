@@ -21,7 +21,7 @@ import { MatSelectModule } from '@angular/material/select';
 //#endregion
 import { NavigateFormComponent } from './components/navigate-form/navigate-form.component';
 import { LogsComponent } from './components/logs/logs.component';
-import { MAT_DATE_FORMATS, MatNativeDateModule, } from '@angular/material/core';
+import { MAT_DATE_FORMATS, MAT_DATE_LOCALE, MatNativeDateModule, } from '@angular/material/core';
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,8 +47,9 @@ import { MAT_DATE_FORMATS, MatNativeDateModule, } from '@angular/material/core';
     MatSelectModule,
     MatDatepickerModule,
     MatNativeDateModule,
+
   ],
-  providers: [HttpClient],
+  providers: [HttpClient, { provide: MAT_DATE_LOCALE, useValue: 'ru-Ru' },],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -5,6 +5,7 @@ import { ProceedReportService } from 'src/app/services/proceed-report-service/pr
 import { GetProceedsReportModel } from 'src/app/models/report/proceed-report-model/get-proceeds-report-model';
 import { ProceedReportModel } from 'src/app/models/report/proceed-report-model/proceed-report-model';
 import { saveAs } from 'file-saver';
+import { formatDate } from '@angular/common';
 
 
 interface Month {
@@ -51,11 +52,28 @@ export class ProceedReportComponent implements OnInit {
   selectedYear: number = (new Date()).getFullYear()
   selectedMonth: number = (new Date()).getMonth() + 1
 
+  startDate: Date = new Date()
+  finishDate: Date = new Date()
 
   ngOnInit(): void {
 
   }
   chosenYearDate: Date;
+
+  getExcelReportByDates() {
+    this.loaderShow = true
+    this.proceedService.GetProceedReport(new GetProceedsReportModel(this.tokenService.getToken(), this.selectedMonth, this.selectedYear, formatDate(this.startDate, 'dd.MM.yyyy', 'en-US'), formatDate(this.finishDate, 'dd.MM.yyyy', 'en-US'))).subscribe({
+      next: result => {
+        this.loaderShow = false
+        saveAs(result, `Отчет по выручке за ${formatDate(this.startDate, 'dd.MM.yyyy', 'en-US')} - ${formatDate(this.finishDate, 'dd.MM.yyyy', 'en-US')}.xlsx`);
+      },
+      error: error => {
+        console.log(error)
+        this.loaderShow = false
+        this.snackBarService.openSnackBar('Ошибка', this.action, this.styleNoConnect)
+      }
+    })
+  }
 
   getExcelReport() {
     this.loaderShow = true

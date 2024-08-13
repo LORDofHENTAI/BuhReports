@@ -1,5 +1,6 @@
 <div class="main-container">
     <div class="control-conteiner" *ngIf="!loaderShow">
+        <h2>Отчет на месяц</h2>
         <mat-form-field appearance="outline">
             <mat-label>Выберите месяц</mat-label>
             <mat-select [(ngModel)]="selectedMonth">
@@ -16,6 +17,25 @@
     </div>
     <div class="report-data-conteiner" *ngIf="!loaderShow">
         <button mat-raised-button (click)="getExcelReport()">Сформировать отчет</button>
+        <button mat-raised-button (click)="DeleteReport()">Очистить отчет</button>
+    </div>
+    <div class="control-conteiner" *ngIf="!loaderShow">
+        <h2>Отчет за период</h2>
+        <mat-form-field appearance="outline" subscriptSizing='dynamic'>
+            <mat-label>Дата с:</mat-label>
+            <input matInput [matDatepicker]="picker" [(ngModel)]="startDate">
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Дата по:</mat-label>
+            <input matInput [matDatepicker]="picker1" [(ngModel)]="finishDate">
+            <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
+            <mat-datepicker #picker1></mat-datepicker>
+        </mat-form-field>
+    </div>
+    <div class="report-data-conteiner" *ngIf="!loaderShow">
+        <button mat-raised-button (click)="getExcelReportByDates()">Сформировать отчет</button>
         <button mat-raised-button (click)="DeleteReport()">Очистить отчет</button>
     </div>
     <div class="loader" *ngIf="loaderShow">
